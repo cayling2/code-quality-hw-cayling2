@@ -10,7 +10,7 @@ calculate_maf <- function(genotypes, na_rm = TRUE) {
     #All 0 or all 2: return 0. A single heterozygote has MAF 0.5.
     if(sum(genotypes) == 0)
         return(0)
-    if(sum(genotypes)/(length(genotypes)*2) == 1)
+    if(sum(genotypes) == (length(genotypes)*2))
         return(0)
     #Reject nonnumeric input and any observed value other than 0, 1, or 2.
     #as.numeric

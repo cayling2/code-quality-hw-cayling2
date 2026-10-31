@@ -5,4 +5,9 @@
 # Put the thresholds in named settings and pass them as function arguments.
 # Source R/variant_functions.R to load your function definitions.
 
-stop("TODO: implement the analysis driver")
+#stop("TODO: implement the analysis driver")
+genotypes_df <- read.csv("data/genotypes.csv", colClasses = "numeric")
+new_df <- data.frame(NA)
+for(i in ncol(genotypes_df))
+    genotypes <- genotypes_df[,i]
+    sum_geno <- summarize_variant(genotypes)
