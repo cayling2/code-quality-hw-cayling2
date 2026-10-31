@@ -13,8 +13,19 @@ calculate_maf <- function(genotypes, na_rm = TRUE) {
     if(sum(genotypes)/(length(genotypes)*2) == 1)
         return(0)
     #Reject nonnumeric input and any observed value other than 0, 1, or 2.
-    
+    #as.numeric
+    if(!as.numeric(genotypes))
+        return("That is a nonnumeric value")
+    if(genotypes != 0)
+        if(genotypes != 1)
+            if(genotypes != 2)
+                return("These are not within the values accepted")
     #na_rm must be exactly one nonmissing logical value; reject invalid settings.
+    if(missing(na_rm))
+        return("Invalid setting for na_rm")
+    if(na_rm != TRUE)
+        if(na_rm != FALSE)
+            return("Invalid setting for na_rm")
     #Validate genotype values even if na_rm = FALSE and missing values are present.
     #stop("TODO: implement calculate_maf()")
     #p = sum of genotype values / (2 * number of observed individuals)
@@ -35,8 +46,11 @@ summarize_variant <- function(genotypes, min_maf = 0.25,
     # TODO: return the specified one-row summary, calling calculate_maf().
     #stop("TODO: implement summarize_variant()")
     #Both thresholds are INCLUSIVE. They are arguments, not hard-coded rules. 
-    #For empty input, return n_called = 0, missing_rate = NA, maf = NA, keep = FALSE. 
+    #For empty input, return n_called = 0, missing_rate = NA, maf = NA, keep = FALSE.
+    if(missing(genotypes))
+        return(data.frame(c(0, NA, NA, FALSE)))
     #For a nonempty entirely missing input, the missing rate is 1 and keep is FALSE.
+    
     #min_maf must be one finite numeric value between 0 and 0.5 inclusive. 
     #max_missing must be one finite numeric value between 0 and 1 inclusive. 
     #Reject invalid inputs/settings with informative errors. 
