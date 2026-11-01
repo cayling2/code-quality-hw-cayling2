@@ -16,9 +16,12 @@ for(i in 1:ncol(genotypes_df))
     #get the col names
     variant_id <- col_names[i,]
     #n_called, missing_rate, maf, keep
-    n_called <- sum_geno[,1]
-    missing_rate <- sum_geno[,2]
-    maf <- sum_geno[,3]
-    keep <- sum_geno[,4]
+    n_called <- sum_geno[1,]
+    missing_rate <- sum_geno[2,]
+    maf <- sum_geno[3,]
+    keep <- sum_geno[4,]
     new_df <- rbind(new_df, c(variant_id, n_called, missing_rate, maf, keep))
-    
+#remove NA row
+sum_df <- new_df[-1,]     
+#write the sum_df to results/summary.csv
+write.csv(sum_df, "./results/summary.csv", col.names = TRUE)
