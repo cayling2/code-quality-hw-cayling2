@@ -1,7 +1,7 @@
 # Code quality and testing report
 
 ## Repository and tested revision
-Repository URL:
+Repository URL: https://github.com/cayling2/code-quality-hw-cayling2
 Final commit identifier:
 Final passing Actions run URL:
 Deliberate test-failure run URL:
