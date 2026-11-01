@@ -50,18 +50,18 @@ summarize_variant <- function(genotypes, min_maf = 0.25,
     if(missing(genotypes))
         return(data.frame(c(0, NA, NA, FALSE)))
     #For a nonempty entirely missing input, the missing rate is 1 and keep is FALSE.
-    if(is.na(genotypes))
-        missing_rate <- 1
-        keep <- FALSE
-        total_length <- length(genotypes)
-        num_missing <- 0
-        for(i in 1:total_length)
-            if(is.na(i))
-                num_missing <- num_missing + 1
-        n_called <- total_length - num_missing
-        maf <- calculate_maf(genotypes, na_rm = TRUE)
-        to_return <- data.frame(c(n_called, missing_rate, maf, keep))
-        return(to_return)
+    #if(is.na(genotypes))
+    #    missing_rate <- 1
+    #    keep <- FALSE
+    #    total_length <- length(genotypes)
+    #    num_missing <- 0
+    #    for(i in 1:total_length)
+    #        if(is.na(i))
+    #            num_missing <- num_missing + 1
+    #    n_called <- total_length - num_missing
+    #    maf <- calculate_maf(genotypes, na_rm = TRUE)
+    #    to_return <- data.frame(c(n_called, missing_rate, maf, keep))
+    #    return(to_return)
     #min_maf must be one finite numeric value between 0 and 0.5 inclusive.
     if(min_maf > 0.5)
         if(min_maf < 0)
