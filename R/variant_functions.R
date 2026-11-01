@@ -7,6 +7,11 @@ calculate_maf <- function(genotypes, na_rm = TRUE) {
     #Empty or entirely missing input: return numeric NA, not 0, NaN, or Inf.
     if(missing(genotypes))
         return(as.numeric(NA))
+    #if any geno missing with na_rm F return NA
+    if(na_rm == FALSE)
+        geno2 <- na.omit(genotypes)
+        if(length(geno2) != length(genotypes))
+            return(NA)
     #Reject nonnumeric input and any observed value other than 0, 1, or 2.
     #is.numeric
     if(!is.numeric(genotypes))
